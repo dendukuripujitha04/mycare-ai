@@ -35,8 +35,8 @@ export async function POST(request: Request) {
     const result = await triggerAppointmentConfirmationCall({
       appointmentId: appointment.id,
       userId: appointment.userId,
-      userName: appointment.user.name,
-      userPhone: appointment.user.phone,
+      userName: appointment.user?.name || appointment.patientName || 'Patient',
+      userPhone: appointment.user?.phone || appointment.patientPhone || '',
       appointmentNumber: appointment.appointmentNumber,
       doctorName: appointment.doctor.name,
       doctorSpecialization: appointment.doctor.specialization,
